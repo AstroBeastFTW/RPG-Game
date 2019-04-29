@@ -1,7 +1,7 @@
 package bleh;
 import java.io.*;
 import javax.swing.*;
-import java.util.*; //testing
+import java.util.*;
 public class Tester extends dice
 {
 	public static void main(String args[])
