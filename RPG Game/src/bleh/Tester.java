@@ -2,8 +2,17 @@ package bleh;
 import java.io.*;
 import javax.swing.*;
 import java.util.*;
-public class Tester extends dice
+public class Tester extends MyButton implements dice 
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public Tester(String label) {
+		super(label);
+		// TODO Auto-generated constructor stub
+	}
 	public static void main(String args[])
 	{
 		String charclass;
@@ -65,7 +74,6 @@ public class Tester extends dice
    }
 	static Scanner scan = new Scanner(System.in);
     static Random rand = new Random();
-    static dice die = new dice();
     public static String playerName;
     public static int playerhp;
     public static int maxhp;
@@ -185,13 +193,13 @@ public class Tester extends dice
             System.out.println("Press 'f' for fireball\nPress 'h' to heal\n");
             spellAction = scan.nextLine();
             if(spellAction.charAt(0) == 'f'){
-            if(die.roll10() > 2){
+            if(dice.roll10() > 2){
                 mana = mana - 10;
                 if(mana <0){
                     System.out.println("You don't have enough mana...");
                     mana = mana + 10;
                 }else{
-                int k = die.roll10(); //randomly hurts 1-10
+                int k = dice.roll10(); //randomly hurts 1-10
                 System.out.println("You hit for " + k + " damage!");
                 enemyhp = enemyhp - k;
                 if(enemyhp <= 0){
@@ -228,7 +236,7 @@ public class Tester extends dice
                     System.out.println("You don't have enough mana...");
                     mana = mana + 8;
                 }else{
-                    int x = die.roll10(); //randomly heals 1-8
+                    int x = dice.roll10(); //randomly heals 1-8
                 System.out.println("You heal your wounds...");
                 System.out.println("+ " + x + " hp");
                 playerhp = playerhp + x;
@@ -295,7 +303,7 @@ public class Tester extends dice
 
     }
     private static void enemyattack() {
-        if(die.roll6() > 2){
+        if(dice.roll6() > 2){
             System.out.println("Enemy hits!");
             playerhp = playerhp - enemymeleedmg;
             if(playerhp <= 0){
@@ -307,7 +315,7 @@ public class Tester extends dice
         }       
     }
     private static boolean attack() {
-        if(die.roll6() > 2){
+        if(dice.roll6() > 2){
             System.out.println("You hit!");
             enemyhp = enemyhp - playermeleedmg;
             if(enemyhp <= 0){
